@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>signup</title>
+</head>
+<body>
+    <div class="container">
+        <% if(error){ %>
+        <div class="alert alert-danger">
+            <% for(var i=0;i<error.length;i++){ %>
+                <%= error[i].msg %> 
+                <br>
+            <% } %>
+        </div>
+        <% } %>
+        <div class="header row justify-content-center">
+            <h2> Register User</h2>
+        </div>
+        <div class="shadow p-3 mb-5 bg-white rounded">
+            <form action="/registration/signup" method="POST">
+                <div class="form-group">
+                    <label for="name">Name: </label>
+                    <input type="text" class="form-control" name="name" placeholder="your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email: </label>
+                    <input type="email" class="form-control" name="email" placeholder="your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password: </label>
+                    <input type="password" class="form-control" name="password" placeholder="your password" required>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit" name="register_user"> Register </button>
+                </div>
+                <div class="form-group">
+                    Already a user <a href="/registration/login">Log in</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

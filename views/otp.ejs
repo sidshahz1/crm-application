@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>verify otp</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header row justify-content-center">
+            <h2> Otp verification</h2>
+        </div>
+        <% if(error){ %>
+            <div class="alert alert-danger">
+                <% for(var i=0;i<error.length;i++){ %>
+                    <%= error[i].msg %> 
+                    <br>
+                <% } %>
+            </div>
+        <% } %>
+        <div class="shadow p-3 mb-5 bg-white rounded">
+            <div class="header row justify-content-center">
+                <h5>Find the otp sent to <%= email %> and put it here.</h5>
+            </div>
+            <form action="/registration/otp" method="POST">
+                <input type="hidden" name='email' value="<%= email %>">
+                <div class="form-group">
+                    <label for="name">OTP: </label>
+                    <input type="number" class="form-control" name="otp"  required>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit" > Submit </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

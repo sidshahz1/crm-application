@@ -1,0 +1,7 @@
+{"message":"new info","level":"info","timestamp":"2020-08-21T11:38:22.108Z"}
+{"message":"new info","level":"info","timestamp":"2020-08-21T11:38:30.821Z"}
+{"message":"new info","level":"info","timestamp":"2020-08-21T11:38:52.256Z"}
+{"message":"request for user login","level":"info","timestamp":"2020-08-21T11:52:06.746Z"}
+{"0":{"value":"as","msg":"Invalid value","param":"password","location":"body"},"level":"info","message":"validation error in login user route- ","timestamp":"2020-08-21T11:52:06.747Z"}
+{"message":"request for user login","level":"info","timestamp":"2020-08-21T11:52:10.888Z"}
+{"level":"info","message":"user logged in","timestamp":"2020-08-21T11:52:11.070Z"}

@@ -1,0 +1,96 @@
+this is crm page
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</head>
+<body>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="/dashboard">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="">CRM</a>
+        </li>
+        <li class="nav-item">
+            <a href="/registration/logout" class="btn btn-outline-dark">logout</a>
+        </li>
+    </ul>    
+    <div class="container">
+        <div class="header row justify-content-center">
+            <h2>CRM page</h2>
+        </div>
+        <% if(error){ %>
+            <div class="alert alert-danger">
+                <% for(var i=0;i<error.length;i++){ %>
+                    <%= error[i].msg %> 
+                    <br>
+                <% } %>
+            </div>
+        <% } %>
+        <div class="row justify-content-center">
+            <table class="table table-dark w-50">
+                <tr>
+                    <th>name</th>
+                    <td><%= data.name %></td>
+                </tr>
+                <tr>
+                    <th>email</th>
+                    <td><%= data.email %></td>
+                </tr>
+                <tr>
+                    <th>phone</th>
+                    <td><%= data.phone %></td>
+                </tr>
+                <tr>
+                    <th>GST</th>
+                    <td><%= data.gst %></td>
+                </tr>
+            </table>
+        </div>
+        <div class="jumbotron">
+            <h1 class="display-4">Send Mail</h1>
+            <hr class="my-4">
+            <form action="/dashboard/crm/sendMail" method="post">
+                <div class="form-group">
+                    <label for="subject">Subject: </label>
+                    <input type="text" class="form-control" name="subject"  required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message: </label>
+                    <textarea name="message" class="form-control" rows="4" maxlength="1000"></textarea>
+                </div>
+                <input type="hidden" name='receiverid' value="<%= data.id %>">
+                <input type="hidden" name='email' value="<%= data.email %>">
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit" name="send">Send mail</button>
+                </div>
+            </form>
+        </div>
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                  <th style="width: 10%">#</th>
+                  <th style="width: 15%">Time</th>
+                  <th style="width: 25%">Subject</th>
+                  <th style="width: 50%">Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(var i=0;i<messages.length;i++){ %>
+                <tr>
+                    <th><%= i+1 %></th>
+                    <td><%= messages[i].time %></td>
+                    <td><%= messages[i].subject %></td>
+                    <td><%= messages[i].message %></td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
